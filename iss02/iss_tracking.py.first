@@ -1,0 +1,24 @@
+#!/usr/bin/python3
+
+import urllib.request
+import json
+
+def main():
+    eoss = 'http://api.open-notify.org/iss-now.json'
+
+    trackiss = urllib.request.urlopen(eoss)
+
+    ztrack = trackiss.read()
+
+    result = json.loads(ztrack.decode('utf-8'))
+
+    print("\n\nConverted python data")
+    print(result)
+    input('\nISS data received & converted. Press any key to continue')
+
+    location = result['iss_position']
+    lat = location['latitude']
+    lon = location['longitude']
+    print('\nLatitude: ', lat)
+    print('Longitude: ', lon) 
+main()
